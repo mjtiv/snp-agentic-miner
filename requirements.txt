@@ -1,0 +1,7 @@
+# Core dependencies
+openai
+requests
+python-dotenv
+
+# Optional / future use (web scraping, literature mining)
+beautifulsoup4
