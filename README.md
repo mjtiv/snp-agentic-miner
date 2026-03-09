@@ -193,9 +193,11 @@ Final output file:
 
     variant_llm_analysis.tsv
 
-------------------------------------------------------------------------
+---
 
-# Example Output Files
+## Example Output Files
+
+The pipeline produces several intermediate artifacts to maintain transparency and reproducibility:
 
     vep_annotations_table.tsv
     gene_disease_scores.tsv
@@ -203,6 +205,20 @@ Final output file:
     master_snp_gene_annotations.tsv
     master_snp_gene_annotations_llm.tsv
     variant_llm_analysis.tsv
+
+These files represent different stages of the pipeline, from deterministic variant annotation to the final LLM-based interpretation report. In downstream workflows, users may choose to merge or prioritize specific tables depending on their triage strategy.
+
+### Important Caveat
+
+This prototype pipeline simplifies variant interpretation by focusing on **RSID-level associations**. It does **not currently evaluate the specific risk allele present in an individual's genotype**.
+
+In real-world analyses using **VCF files from patients or cohorts**, interpretation must consider:
+
+- the **observed genotype**
+- the **disease-associated risk allele**
+- allele frequency and population context
+
+Future versions of the pipeline may incorporate genotype-aware analysis to support more precise variant interpretation.
 
 ------------------------------------------------------------------------
 
