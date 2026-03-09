@@ -252,7 +252,6 @@ The pipeline automatically loads this key using `python-dotenv`.
 Example `.env` file:
 
     OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxx
-
 ------------------------------------------------------------------------
 
 # Running the Pipeline
@@ -277,6 +276,29 @@ python SNP_Agentic_Miner_2.0.py
 
 The program will generate several intermediate annotation tables and a
 final variant interpretation report.
+
+### Disease Configuration (Prototype Caveat)
+
+In the current prototype version, the **disease of interest must be
+defined directly in the script** rather than being supplied as an input
+parameter.
+
+Before running the pipeline, open the main script and modify the
+`main()` function:
+
+``` python
+# Disease of Interest
+disease_of_interest = "Coronary Artery Disease"
+```
+
+Replace the value with the disease you wish to analyze.
+
+Future versions of the pipeline may allow the disease to be specified
+via:
+
+-   command-line arguments
+-   configuration files
+-   interactive user input
 
 ------------------------------------------------------------------------
 
