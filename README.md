@@ -17,29 +17,52 @@ potential mechanisms.
 
 # Architecture
 
-    User SNP List + Disease
-          ↓
-    Variant Annotation (VEP)
-          ↓
-    Gene Extraction
-          ↓
-    Gene–Disease Association Scoring (Open Targets)
-          ↓
-    Gene Function Retrieval (Open Targets)
-          ↓
-    LLM Gene Function Compression
-          ↓
-    Master Variant Annotation Table
-          ↓
-    Reduced LLM Input Table
-          ↓
-    LLM Variant Interpretation
-          ↓
-    Final Variant Analysis Report
+SNP Agentic Miner (SAM) follows a **deterministic-first, agentic RAG pipeline** for variant interpretation.
 
-This architecture ensures biological evidence is grounded in curated
-databases while the LLM performs structured interpretation rather than
-raw discovery.
+![SNP Agentic Miner Pipeline Overview](Pipeline_Overview_Figure.png)
+
+The pipeline moves through three major layers:
+
+1. **Deterministic variant annotation**
+   - User SNP list and disease input
+   - Variant annotation with **VEP**
+   - Gene mapping
+   - Gene–disease association scoring with **Open Targets**
+
+2. **Grounded biological context building**
+   - Gene function retrieval from **Open Targets**
+   - LLM-based gene function compression
+   - Creation of a master variant annotation table
+   - Reduction into a compact LLM-ready input table
+
+3. **Controlled LLM interpretation**
+   - Row-by-row LLM variant interpretation
+   - Structured final variant analysis report
+
+This architecture keeps **biological evidence grounded in curated databases** while the LLM performs **controlled compression and interpretation rather than raw discovery**.
+
+## Pipeline Flow
+
+```text
+User SNP List + Disease
+        ↓
+Variant Annotation (VEP)
+        ↓
+Gene Mapping
+        ↓
+Gene–Disease Association Scoring (Open Targets)
+        ↓
+Gene Function Retrieval (Open Targets)
+        ↓
+LLM Gene Function Compression
+        ↓
+Master Variant Annotation Table
+        ↓
+Reduced LLM Input Table
+        ↓
+LLM Variant Interpretation
+        ↓
+Final Variant Analysis Report
 
 ------------------------------------------------------------------------
 
