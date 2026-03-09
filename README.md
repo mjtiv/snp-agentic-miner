@@ -180,22 +180,14 @@ interpretation fields:
 -   **Priority**
 -   **Rationale**
 
-Example output:
+## Example Variant Interpretation
 
-  ----------------------------------------------------------------------------
-  Gene        RSID         Plausibility   Mechanism   Priority    Rationale
-  ----------- ------------ -------------- ----------- ----------- ------------
-  APOE        rs429358     High           Altered     High        Missense
-                                          protein                 variant
-                                          function                affecting
-                                                                  APOE lipid
-                                                                  metabolism
+Below is an example row from the final variant interpretation report.
 
-  PCSK9       rs11591147   High           Loss of     High        PCSK9
-                                          function                regulates
-                                                                  LDL receptor
-                                                                  turnover
-  ----------------------------------------------------------------------------
+| Gene | RSID | Plausibility | Mechanism | Priority | Rationale |
+|------|------|-------------|-----------|----------|-----------|
+| APOE | rs429358 | High | Altered protein function | High | Missense variant affecting APOE lipid metabolism |
+| PCSK9 | rs11591147 | High | Loss of function | High | PCSK9 regulates LDL receptor turnover affecting cholesterol levels |
 
 Final output file:
 
