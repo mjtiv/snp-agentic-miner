@@ -1,0 +1,11 @@
+RSID	Chromosome	Position	Gene	Transcript	Consequence	Impact	AminoAcids	Codons	Biotype	Distance	Allele	VariantClass
+rs429358	19	44908684	APOE	ENST00000252486	missense_variant	MODERATE	C/R	Tgc/Cgc	protein_coding	None	T/C	SNV
+rs688	19	11116926	LDLR	ENST00000558518	synonymous_variant	LOW	N	aaC/aaT	protein_coding	None	C/T	SNV
+rs11591147	1	55039974	PCSK9	ENST00000302118	missense_variant	MODERATE	R/L	cGt/cTt	protein_coding	None	G/A/T	SNV
+rs1367117	2	21041028	APOB	ENST00000233242	missense_variant	MODERATE	T/S	aCc/aGc	protein_coding	None	G/A/C	SNV
+rs10455872	6	160589086	LPA	ENST00000316300	intron_variant	MODIFIER			protein_coding	None	A/G	SNV
+rs646776	1	109275908	CELSR2	ENST00000271332	downstream_gene_variant	MODIFIER			protein_coding	157	C/G/T	SNV
+rs708272	16	56962376	CETP	ENST00000200676	intron_variant	MODIFIER			protein_coding	None	G/A/C	SNV
+rs17238484	5	75352671	HMGCR	ENST00000287936	intron_variant	MODIFIER			protein_coding	None	G/T	SNV
+rs9939609	16	53786615	FTO	ENST00000471389	intron_variant	MODIFIER			protein_coding	None	T/A	SNV
+rs7903146	10	112998590	TCF7L2	ENST00000355995	intron_variant	MODIFIER			protein_coding	None	C/G/T	SNV

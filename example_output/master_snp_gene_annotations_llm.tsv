@@ -1,0 +1,11 @@
+Gene	RSID	Consequence	Impact	VariantClass	AssociationScore	DiseaseName	ShortFunction
+APOE	rs429358	missense_variant	MODERATE	SNV	0.82045962384933	coronary artery disease	Mediates lipoprotein-dependent transport and clearance of lipids and cholesterol between tissues via receptors
+LDLR	rs688	synonymous_variant	LOW	SNV	0.7383822254192259	coronary artery disease	Cell-surface receptor that binds LDL and mediates clathrin-dependent endocytosis
+PCSK9	rs11591147	missense_variant	MODERATE	SNV	0.7291643901657193	coronary artery disease	Promotes LDL receptor degradation, reducing LDLR surface levels and regulating plasma cholesterol
+APOB	rs1367117	missense_variant	MODERATE	SNV	0.5840139497933688	coronary artery disease	Major structural apolipoprotein of chylomicrons, VLDL, and LDL that mediates LDL receptor binding.
+LPA	rs10455872	intron_variant	MODIFIER	SNV	0.597049690288134	coronary artery disease	Main structural component of lipoprotein(a) that influences lipid transport and inhibits fibrinolysis
+CELSR2	rs646776	downstream_gene_variant	MODIFIER	SNV	0.5860471093193584	coronary artery disease	Atypical cadherin receptor mediating cell–cell signaling during nervous system development
+CETP	rs708272	intron_variant	MODIFIER	SNV	0.6289960097081245	coronary artery disease	Mediates transfer of cholesteryl esters and triglycerides between HDL and VLDL, facilitating reverse cholesterol transport
+HMGCR	rs17238484	intron_variant	MODIFIER	SNV	0.726064024876024	coronary artery disease	Catalyzes HMG-CoA conversion to mevalonate, the rate-limiting step in cholesterol and isoprenoid synthesis.
+FTO	rs9939609	intron_variant	MODIFIER	SNV	0.4744538616623176	coronary artery disease	Demethylates N6-methyladenosine (m6A) in mRNA, regulating mRNA methylation and stability
+TCF7L2	rs7903146	intron_variant	MODIFIER	SNV	0.5259177351758068	coronary artery disease	Transcription factor mediating Wnt/beta-catenin-dependent regulation of target gene expression.
