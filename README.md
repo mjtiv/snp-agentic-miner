@@ -389,3 +389,33 @@ This software relies on external APIs and data services. Users are responsible f
 - **Ensembl VEP** data and APIs are provided by the Ensembl project and are subject to their usage guidelines.
 
 Users deploying this pipeline in production or commercial environments should verify the applicable licensing and API usage policies of these services.
+
+---
+
+# Author
+
+**M. Joseph Tomlinson IV, Ph.D.**  
+Bioinformatics Researcher | AI Systems Builder  
+
+This repository presents a research prototype exploring deterministic data pipelines combined with agentic AI reasoning for genomic variant interpretation.
+
+---
+
+# Contact
+
+Questions, suggestions, or collaboration inquiries are welcome.
+
+Email: mjtiv@udel.edu
+
+You may also open an issue in this repository to discuss improvements or report problems.
+
+---
+
+# Citation
+
+If referencing this project in academic or technical work, please cite:
+
+Tomlinson, M.J. (2026).  
+**SNP Agentic Miner: A Deterministic + Agentic RAG Pipeline for Variant Interpretation.**  
+GitHub Repository.  
+https://github.com/mjtiv/snp-agentic-miner
