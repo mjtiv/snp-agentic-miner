@@ -1,5 +1,5 @@
 # SNP Agentic Miner (SAM)
-A deterministic + agentic RAG pipeline for SNP annotation,
+A deterministic + agentic pipeline for SNP annotation,
 biological evidence retrieval, and structured variant interpretation.
 
 SNP Agentic Miner (SAM) is a Python pipeline that analyzes genetic
