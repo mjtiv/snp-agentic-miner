@@ -19,7 +19,7 @@ potential mechanisms.
 
 # Architecture
 
-SNP Agentic Miner (SAM) follows a **deterministic-first, agentic RAG pipeline** for variant interpretation.
+SNP Agentic Miner (SAM) follows a deterministic-first pipeline with an agentic LLM interpretation layer.
 
 ![SNP Agentic Miner Pipeline Overview](Pipeline_Overview_Figure.png)
 
