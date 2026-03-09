@@ -17,7 +17,7 @@ potential mechanisms.
 
 # Architecture
 
-    User SNP List
+    User SNP List + Disease
           ↓
     Variant Annotation (VEP)
           ↓
