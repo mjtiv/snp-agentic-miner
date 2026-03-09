@@ -1,178 +1,308 @@
-SNP Agentic Miner (SAM)
+# SNP Agentic Miner (SAM)
 
-Overview SNP Agentic Miner (SAM) is a Python pipeline that analyzes
-genetic variants (SNPs) in the context of a disease of interest using a
-combination of biomedical APIs and controlled LLM reasoning.
+SNP Agentic Miner (SAM) is a Python pipeline that analyzes genetic
+variants (SNPs) in the context of a disease of interest using biomedical
+APIs and controlled LLM reasoning.
 
-The system follows a deterministic-first architecture: biological data
-is retrieved from structured databases, and LLMs are used only for
-compression and interpretation, reducing hallucination risk while
-enabling flexible biological reasoning.
+The system follows a **deterministic‑first architecture**: biological
+evidence is retrieved from structured databases, and LLMs are used only
+for **compression and interpretation**, reducing hallucination risk
+while enabling flexible biological reasoning.
 
-The pipeline produces a structured variant interpretation report that
-highlights biologically relevant variants and explains their potential
-mechanisms.
-
-------------------------------------------------------------------------
-
-Architecture
-
-User SNP List ↓ Variant Annotation (VEP) ↓ Gene Extraction ↓
-Gene–Disease Association Scoring (Open Targets) ↓ Gene Function
-Retrieval (Open Targets) ↓ LLM Gene Function Compression ↓ Master
-Variant Annotation Table ↓ Reduced LLM Input Table ↓ LLM Variant
-Interpretation ↓ Final Variant Analysis Report
-
-This architecture ensures that biological evidence is grounded in
-curated databases, while the LLM performs structured interpretation
-rather than raw discovery.
+The pipeline produces a **structured variant interpretation report**
+highlighting biologically relevant variants and explaining their
+potential mechanisms.
 
 ------------------------------------------------------------------------
 
-Pipeline Steps
+# Architecture
 
-1.  Disease Normalization The pipeline resolves a user-specified disease
-    name using the Open Targets API to obtain a canonical disease
-    identifier (EFO ID) and synonyms.
+    User SNP List
+          ↓
+    Variant Annotation (VEP)
+          ↓
+    Gene Extraction
+          ↓
+    Gene–Disease Association Scoring (Open Targets)
+          ↓
+    Gene Function Retrieval (Open Targets)
+          ↓
+    LLM Gene Function Compression
+          ↓
+    Master Variant Annotation Table
+          ↓
+    Reduced LLM Input Table
+          ↓
+    LLM Variant Interpretation
+          ↓
+    Final Variant Analysis Report
 
-Example: Input: Coronary Artery Disease Output: EFO_0001645
-
-2.  Variant Annotation Each SNP is annotated using the Ensembl Variant
-    Effect Predictor (VEP), which returns genomic location, affected
-    gene, transcript consequence, predicted functional impact, and
-    variant classification.
-
-Output file: vep_annotations_table.tsv
-
-3.  Gene–Disease Association Scoring Genes affected by the SNPs are
-    evaluated against the disease using Open Targets evidence scores
-    that integrate multiple biomedical datasets.
-
-Output file: gene_disease_scores.tsv
-
-4.  Gene Function Retrieval The pipeline retrieves gene functional
-    descriptions from Open Targets target annotations.
-
-Output file: gene_functions.tsv
-
-5.  Gene Function Compression (LLM) Gene function descriptions are
-    compressed into short biological summaries using an LLM.
-
-Example: Raw: “Proprotein convertase subtilisin/kexin type 9 regulates
-degradation of LDL receptors…”
-
-Compressed: “Regulates LDL receptor degradation controlling cholesterol
-levels.”
-
-Output file: gene_functions_reduced.tsv
-
-6.  Master Annotation Table All deterministic evidence is merged into a
-    single structured dataset.
-
-Output file: master_snp_gene_annotations.tsv
-
-7.  Reduced LLM Input Table To minimize token usage and keep the model
-    focused, a reduced table is created containing only key
-    interpretation fields.
-
-Output file: master_snp_gene_annotations_llm.tsv
-
-Fields include: Gene RSID Variant consequence Impact Variant class
-Disease association score Gene function summary
-
-8.  LLM Variant Interpretation Each SNP is evaluated individually by the
-    LLM to produce structured interpretations.
-
-The model assigns: - Plausibility - Mechanism Category - Priority -
-Rationale
-
-Example output:
-
-Gene | RSID | Plausibility | Mechanism | Priority | Rationale APOE |
-rs429358 | High | Altered protein function | High | Missense variant
-affecting APOE lipid metabolism. PCSK9 | rs11591147 | High | Loss of
-function | High | PCSK9 regulates LDL receptor turnover affecting
-cholesterol levels.
-
-Final output file: variant_llm_analysis.tsv
+This architecture ensures biological evidence is grounded in curated
+databases while the LLM performs structured interpretation rather than
+raw discovery.
 
 ------------------------------------------------------------------------
 
-Example Output Files
+# Pipeline Steps
 
-vep_annotations_table.tsv gene_disease_scores.tsv
-gene_functions_reduced.tsv master_snp_gene_annotations.tsv
-master_snp_gene_annotations_llm.tsv variant_llm_analysis.tsv
+## 1. Disease Normalization
 
-------------------------------------------------------------------------
-
-Installation
-
-Clone the repository:
-
-git clone https://github.com/yourusername/snp-agentic-miner.git cd
-snp-agentic-miner
-
-Install dependencies:
-
-pip install -r requirements.txt
-
-Set environment variable:
-
-OPENAI_API_KEY=your_key_here
-
-------------------------------------------------------------------------
-
-Running the Pipeline
-
-Provide a file containing SNP identifiers:
-
-list_of_snps.txt
+The pipeline resolves a user‑specified disease name using the **Open
+Targets API** to obtain a canonical disease identifier (EFO ID) and
+synonyms.
 
 Example:
 
-rs429358 rs688 rs11591147
+    Input: Coronary Artery Disease
+    Output: EFO_0001645
+
+------------------------------------------------------------------------
+
+## 2. Variant Annotation
+
+Each SNP is annotated using the **Ensembl Variant Effect Predictor
+(VEP)**.
+
+Returned annotations include:
+
+-   genomic location
+-   affected gene
+-   transcript consequence
+-   predicted functional impact
+-   variant classification
+
+Output file:
+
+    vep_annotations_table.tsv
+
+------------------------------------------------------------------------
+
+## 3. Gene--Disease Association Scoring
+
+Genes affected by SNPs are evaluated against the disease using **Open
+Targets evidence scores**.
+
+These scores integrate multiple data sources:
+
+-   genetics studies
+-   literature evidence
+-   drug targets
+-   pathway databases
+
+Output file:
+
+    gene_disease_scores.tsv
+
+------------------------------------------------------------------------
+
+## 4. Gene Function Retrieval
+
+The pipeline retrieves gene functional descriptions from **Open Targets
+target annotations**.
+
+Output file:
+
+    gene_functions.tsv
+
+------------------------------------------------------------------------
+
+## 5. Gene Function Compression (LLM)
+
+Gene function descriptions are often long and redundant.
+
+An LLM compresses these descriptions into concise biological summaries.
+
+Example:
+
+Raw:
+
+    Proprotein convertase subtilisin/kexin type 9 regulates degradation of LDL receptors.
+
+Compressed:
+
+    Regulates LDL receptor degradation controlling cholesterol levels.
+
+Output file:
+
+    gene_functions_reduced.tsv
+
+------------------------------------------------------------------------
+
+## 6. Master Annotation Table
+
+All deterministic evidence is merged into a single structured dataset.
+
+Output file:
+
+    master_snp_gene_annotations.tsv
+
+Fields include:
+
+-   SNP identifier
+-   gene
+-   variant consequence
+-   disease association score
+-   gene function summary
+
+------------------------------------------------------------------------
+
+## 7. Reduced LLM Input Table
+
+To minimize token usage and maintain model focus, a reduced table is
+created containing only key interpretation fields.
+
+Output file:
+
+    master_snp_gene_annotations_llm.tsv
+
+Fields include:
+
+-   Gene
+-   RSID
+-   Consequence
+-   Impact
+-   VariantClass
+-   AssociationScore
+-   DiseaseName
+-   ShortFunction
+
+------------------------------------------------------------------------
+
+## 8. LLM Variant Interpretation
+
+Each SNP is evaluated individually by an LLM to produce structured
+interpretation fields:
+
+-   **Plausibility**
+-   **Mechanism Category**
+-   **Priority**
+-   **Rationale**
+
+Example output:
+
+  ----------------------------------------------------------------------------
+  Gene        RSID         Plausibility   Mechanism   Priority    Rationale
+  ----------- ------------ -------------- ----------- ----------- ------------
+  APOE        rs429358     High           Altered     High        Missense
+                                          protein                 variant
+                                          function                affecting
+                                                                  APOE lipid
+                                                                  metabolism
+
+  PCSK9       rs11591147   High           Loss of     High        PCSK9
+                                          function                regulates
+                                                                  LDL receptor
+                                                                  turnover
+  ----------------------------------------------------------------------------
+
+Final output file:
+
+    variant_llm_analysis.tsv
+
+------------------------------------------------------------------------
+
+# Example Output Files
+
+    vep_annotations_table.tsv
+    gene_disease_scores.tsv
+    gene_functions_reduced.tsv
+    master_snp_gene_annotations.tsv
+    master_snp_gene_annotations_llm.tsv
+    variant_llm_analysis.tsv
+
+------------------------------------------------------------------------
+
+# Installation
+
+Clone the repository:
+
+``` bash
+git clone https://github.com/yourusername/snp-agentic-miner.git
+cd snp-agentic-miner
+```
+
+Install dependencies:
+
+``` bash
+pip install -r requirements.txt
+```
+
+Set environment variable:
+
+    OPENAI_API_KEY=your_key_here
+
+------------------------------------------------------------------------
+
+# Running the Pipeline
+
+Provide a SNP list file:
+
+    list_of_snps.txt
+
+Example:
+
+    rs429358
+    rs688
+    rs11591147
 
 Run the program:
 
+``` bash
 python SNP_Agentic_Miner.py
+```
 
 The pipeline will generate the annotation tables and final variant
 interpretation report.
 
 ------------------------------------------------------------------------
 
-Design Principles
+# Design Principles
 
-Deterministic Evidence First Biological evidence is retrieved from
-curated biomedical databases before AI interpretation.
+### Deterministic Evidence First
 
-Controlled LLM Usage LLMs are used for summarization and interpretation,
-not raw discovery.
+Biological evidence is retrieved from curated databases before any AI
+interpretation.
 
-Transparent Intermediate Artifacts Each pipeline stage produces a
-standalone file to improve debugging and reproducibility.
+### Controlled LLM Usage
 
-Variant-Level Interpretation Variants are evaluated individually to
-avoid context contamination between SNPs.
+LLMs are used for summarization and structured interpretation --- not
+raw discovery.
 
-------------------------------------------------------------------------
+### Transparent Intermediate Artifacts
 
-Limitations
+Each pipeline stage produces a standalone file for debugging and
+reproducibility.
 
-This prototype identifies and interprets disease-relevant SNP loci but
-does not yet incorporate genotype directionality (risk allele matching).
+### Variant-Level Interpretation
 
-Future versions may include: - genotype parsing - risk allele matching -
-population-specific risk interpretation - polygenic risk integration
+Variants are evaluated individually to prevent context contamination.
 
 ------------------------------------------------------------------------
 
-License MIT License
+# Limitations
+
+This prototype identifies and interprets disease‑relevant SNP loci but
+**does not yet incorporate genotype directionality** (risk allele
+matching).
+
+Future improvements may include:
+
+-   genotype parsing
+-   risk allele matching
+-   population‑specific interpretation
+-   polygenic risk integration
 
 ------------------------------------------------------------------------
 
-Acknowledgments
+# License
 
-This project integrates data from: - Ensembl Variant Effect Predictor
-(VEP) - Open Targets Platform
+MIT License
+
+------------------------------------------------------------------------
+
+# Acknowledgments
+
+This project integrates data from:
+
+-   **Ensembl Variant Effect Predictor (VEP)**
+-   **Open Targets Platform**
