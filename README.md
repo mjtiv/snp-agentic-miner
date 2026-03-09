@@ -227,7 +227,7 @@ Future versions of the pipeline may incorporate genotype-aware analysis to suppo
 Clone the repository:
 
 ``` bash
-git clone https://github.com/yourusername/snp-agentic-miner.git
+git clone https://github.com/mjtiv/snp-agentic-miner.git
 cd snp-agentic-miner
 ```
 
@@ -237,9 +237,72 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-Set environment variable:
+------------------------------------------------------------------------
 
-    OPENAI_API_KEY=your_key_here
+# Environment Configuration
+
+This program requires access to the **OpenAI API**.
+
+Create a `.env` file in the root directory of the repository:
+
+    OPENAI_API_KEY=your_api_key_here
+
+The pipeline automatically loads this key using `python-dotenv`.
+
+Example `.env` file:
+
+    OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxx
+
+------------------------------------------------------------------------
+
+# Running the Pipeline
+
+Provide a file containing a list of SNP identifiers.
+
+Example file:
+
+    list_of_snps.txt
+
+Example contents:
+
+    rs429358
+    rs688
+    rs11591147
+
+Run the pipeline:
+
+``` bash
+python SNP_Agentic_Miner_2.0.py
+```
+
+The program will generate several intermediate annotation tables and a
+final variant interpretation report.
+
+------------------------------------------------------------------------
+
+# Version Notes
+
+The script filename may change as the pipeline evolves (for example
+`SNP_Agentic_Miner_2.0.py`, `2.1`, etc.).
+
+Users should run the **latest version of the script included in the
+repository**, as earlier versions may lack features or contain
+experimental components.
+
+Future versions of the pipeline may include:
+
+-   genotype-aware variant interpretation
+-   risk allele evaluation from VCF files
+-   cohort-level analysis
+-   expanded biological evidence sources
+
+------------------------------------------------------------------------
+
+# Output
+
+The final interpretation results are written to:
+
+    variant_llm_analysis.tsv
 
 ------------------------------------------------------------------------
 
@@ -258,8 +321,9 @@ Example:
 Run the program:
 
 ``` bash
-python SNP_Agentic_Miner.py
+python SNP_Agentic_Miner_2.0.py
 ```
+*Be aware of version of software released
 
 The pipeline will generate the annotation tables and final variant
 interpretation report.
