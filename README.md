@@ -306,30 +306,6 @@ The final interpretation results are written to:
 
 ------------------------------------------------------------------------
 
-# Running the Pipeline
-
-Provide a SNP list file:
-
-    list_of_snps.txt
-
-Example:
-
-    rs429358
-    rs688
-    rs11591147
-
-Run the program:
-
-``` bash
-python SNP_Agentic_Miner_2.0.py
-```
-*Be aware of version of software released
-
-The pipeline will generate the annotation tables and final variant
-interpretation report.
-
-------------------------------------------------------------------------
-
 # Design Principles
 
 ### Deterministic Evidence First
