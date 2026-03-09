@@ -374,7 +374,18 @@ MIT License
 
 # Acknowledgments
 
-This project integrates data from:
+This project integrates data and services from the following platforms:
 
--   **Ensembl Variant Effect Predictor (VEP)**
--   **Open Targets Platform**
+- **Ensembl Variant Effect Predictor (VEP)**  
+- **Open Targets Platform**  
+- **OpenAI API**
+
+### Data and API Usage Disclaimer
+
+This software relies on external APIs and data services. Users are responsible for complying with the terms of use of these services.
+
+- **OpenAI API** calls may incur usage costs depending on the model and request volume.
+- **Open Targets Platform** data is publicly available for research use; however, commercial use may require review of the platform's licensing terms.
+- **Ensembl VEP** data and APIs are provided by the Ensembl project and are subject to their usage guidelines.
+
+Users deploying this pipeline in production or commercial environments should verify the applicable licensing and API usage policies of these services.
