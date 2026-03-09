@@ -41,29 +41,6 @@ The pipeline moves through three major layers:
 
 This architecture keeps **biological evidence grounded in curated databases** while the LLM performs **controlled compression and interpretation rather than raw discovery**.
 
-## Pipeline Flow
-
-```text
-User SNP List + Disease
-        ↓
-Variant Annotation (VEP)
-        ↓
-Gene Mapping
-        ↓
-Gene–Disease Association Scoring (Open Targets)
-        ↓
-Gene Function Retrieval (Open Targets)
-        ↓
-LLM Gene Function Compression
-        ↓
-Master Variant Annotation Table
-        ↓
-Reduced LLM Input Table
-        ↓
-LLM Variant Interpretation
-        ↓
-Final Variant Analysis Report
-
 ------------------------------------------------------------------------
 
 # Pipeline Steps
